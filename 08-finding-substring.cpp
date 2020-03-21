@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <vector>
+#include <cstring>
 
 int main(int argc, char* argv[]) {
 	if (argc != 3) {
@@ -15,7 +16,7 @@ int main(int argc, char* argv[]) {
 		perror("fopen failed");
 		return EXIT_FAILURE;
 	}
-	const int size = strlen(s);
+	const size_t size = strlen(s);
 
 
 	std::vector<int> prefix_function(size);
@@ -43,9 +44,11 @@ int main(int argc, char* argv[]) {
 		}
 		if (current_length == size) {
 			printf("true\n");
+			fclose(f);
 			return 0;
 		}
 	}
 	printf("false\n");
+	fclose(f);
 	return 0;
 }
